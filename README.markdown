@@ -8,16 +8,10 @@ Advised by [Mukkai S. Krishnamoorthy](http://www.cs.rpi.edu/~moorthy).
 In order to build the thesis in PDF output format, the follow dependencies are
 required:
 
--   `pdflatex` (for example, from [TexLive](https://www.tug.org/texlive/))
 -   `pandoc` (John Macfarlane's document converter, [pandoc](http://johnmacfarlane.net/pandoc/))
+-   `pdflatex` (for example, from [TexLive](https://www.tug.org/texlive/))
 
-The thesis template is located in `thesis.tex`. Each of the four chapters has
-its own Markdown file:
-
-1.  `intro.markdown` -- Introduction
-2.  `bifrost.markdown` -- Description of Bifrost protocol
-3.  `citenet.markdown` -- Case study of approaches to finding patterns in citation networks
-4.  `conclusion.markdown` -- Conclusion
+The main content for the thesis is located in `main.markdown`.
 
 To build the output (as `thesis.pdf`), simply run:
 
