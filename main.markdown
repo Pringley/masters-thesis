@@ -601,8 +601,28 @@ matrices, and retrieving the result from the returned object proxy.
     { "result": [[8, 5], [20, 13]] }
     ```
 
-CASE STUDY OF APPROACHES TO FINDING PATTERNS IN CITATION NETWORKS
+CASE STUDY OF APPROACHES TO FINDING PATTERNS IN CITATION NETWORKS {#patentchapter}
 =================================================================
+
+To highlight the robustness of the protocol as-written for many libraries, the
+following case study was performed in Ruby, using Bifrost to access Python
+libraries for network analysis, data processing, and visualization.
+
+The following imports were used:
+
+```ruby
+require 'rubifrost'
+
+# Connect to the Python server.
+python = RuBifrost.python
+
+# Load graph library.
+NetworkX = python.import('networkx')
+# Load data library.
+Pandas = python.import('pandas')
+# Load visualization library.
+PyPlot = python.import('matplotlib.pyplot')
+```
 
 ## Background
 
