@@ -87,8 +87,8 @@ and Java programs.
 
 ### Foreign Function Interface
 
-For languages with a common link to C, the Foreign Function Interface is a
-powerful tool for passing types across a bridge.
+For languages with a common link to C, the Foreign Function Interface (FFI) is
+a powerful tool for passing types across a bridge.
 
 RubyPython uses FFI to dynamically generate a bridge between the C
 implementation of Ruby and CPython.
