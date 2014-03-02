@@ -1,3 +1,5 @@
+.PHONY: clean
+
 thesis.pdf: thesis.tex intro.tex bifrost.tex citenet.tex conclusion.tex
 	pdflatex $< && pdflatex $<
 
@@ -13,3 +15,5 @@ citenet.tex: citenet.markdown
 conclusion.tex: conclusion.markdown
 	pandoc --to latex --output $@ -- $<
 
+clean:
+	rm -f intro.tex bifrost.tex citenet.tex conclusion.tex *.aux *.lof *.log *.lot *.fls *.out *.toc
