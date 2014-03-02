@@ -8,8 +8,14 @@ thesisadviser: "Mukkai S. Krishnamoorthy"
 thesissubmitdate: March 2014
 thesisgraddate: May 2014
 
-thesisacknowledgement: |
-    Acknowledgement text goes here.
+thesisacknowledgements: |
+    I would like to thank:
+
+    -   My advisor, Dr. Krishnamoorthy, for all his help and patience, and
+        without whom I never would have finished this thesis.
+
+    -   Dr. Kenneth Simons, for providing the basis of the paper and for his
+        advice on its direction.
 
 thesisabstract: |
     A simple strategy is presented for dynamically interpreting remote procedure
