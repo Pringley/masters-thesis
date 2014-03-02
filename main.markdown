@@ -14,24 +14,18 @@ thesisacknowledgement: |
 thesisabstract: |
     Abstract text goes here.
 
+thesisappendix: |
+    # SOURCE
+
+    This thesis was generated using John Macfarlane's Pandoc as a frontend for
+    LaTeX as a renderer. Source for the thesis is available at
+    <http://github.com/Pringley/masters-thesis>.
+
 thesisbibliography: |
     \bibitem{thisbook} This is the first item in the Bibliography.
     Let's make it very long so it takes more than one line.
     Let's make it very long so it takes more than one line.
     \bibitem{anotherbook} The second item in the Bibliography.
-
-thesisappendix: |
-    \chapter{THIS IS AN APPENDIX}
-    Note the numbering of the chapter heading is changed.
-    This is a sentence to take up space and look like text.
-    \section{A Section Heading}
-    This is how equations are numbered in an appendix:
-    \begin{equation}
-    x^2 + y^2 = z^2
-    \end{equation}
-
-    \chapter{THIS IS ANOTHER APPENDIX}
-    This is a sentence to take up space and look like text.
 
 documentclass: thesis
 numbersections: true
