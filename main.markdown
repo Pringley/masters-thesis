@@ -50,8 +50,96 @@ links-as-notes: true
 INTRODUCTION
 ============
 
+A **language bridge** allows a program written in one language to use functions
+or libraries from a different language. For example, a web server written in
+Ruby might use a bridge to call backend functions written in Java.
+
+The use of languages bridges often introduces significant overhead, either in
+performance or in code complexity. However, if the destination language is
+faster or has better libraries, the benefits often outweigh those costs.
+
+## Existing techniques
+
+The concept of a language bridge is not a new one. Current techniques vary in
+overhead and complexity.
+
+### Common Intermediate Language
+
+Languages within the same runtime are typically capable of bridging with little
+to no overhead.
+
+This is the approach used by Microsoft's .NET framework to provide language
+interoperability between C#, C++, Visual Basic, and others. All code is
+compiled to a common intermediate language, a shared bytecode executed by a
+virtual machine.
+
+The Java ecosystem can also be used similarly -- for example, between Jython
+and Java programs.
+
+### Foreign Function Interface
+
+For languages with a common link to C, the Foreign Function Interface is a
+powerful tool for passing types across a bridge.
+
+RubyPython uses FFI to dynamically generate a bridge between the C
+implementation of Ruby and CPython.
+
+This is an excellent approach but quickly becomes difficult when bridging
+across runtimes. For example, Java uses JNI (Java Native Interface) for foreign
+function calls to C. Prior art exists trying to connect Jython and CPython, but
+the restriction on types makes things difficult. Many standard libraries are
+not functional, and NumPy also does not work using this technique.
+
+### Remote Procedure Call
+
+The most robust technique for language bridging is remote procedure call --
+send requests through a channel to a server running the other language.
+
+Excellent frameworks exist such as Apache Thrift (used extensively by
+Facebook). However, these require extensive configuration for each function
+that needs bridging:
+
+```
+struct UserProfile {
+    1: i32 uid,
+    2: string name,
+    3: string blurb
+}
+service UserStorage {
+    void store(1: UserProfile user),
+    UserProfile retrieve(1: i32 uid)
+}
+```
+
+## Desired features
+
+In order to achieve the best of both worlds, we need:
+
+-   **Cross-runtime**: we may want to use libraries that are compiled in
+    different bytecodes -- for example, mix Java and C libraries
+
+-   **Dynamic**: generate the bindings for *any* library without tedious "glue
+    code" like Thrift
+
+We aim to do this by using:
+
+-   **Remote procedure call** over UNIX pipes to cross runtimes
+-   **Language introspection** to eschew configuration files
+
+The next chapter demonstrates our technique.
+
 BIFROST: A DYNAMIC REMOTE PROCEDURE CALL PROTOCOL
 =================================================
+
+The following section presents a proof of concept called `Grisbr`, a Ruby
+library that performs matrix multiplication by sending requests to a Python
+server. This demonstrates the first part of the scheme -- the remote procedure
+call using JSON over UNIX pipes. We evaluate the performance of this technique
+for multiplication of large and small matrices.
+
+The section after that presents `Bifrost`, a generalized version of `Grisbr`
+that can load any module or package, generally handle most functions, and even
+use foreign language objects in the client space.
 
 ## `Grisbr` -- matrix multiplication proof of concept
 
