@@ -140,17 +140,17 @@ The next chapter demonstrates our technique.
 BIFROST: A DYNAMIC REMOTE PROCEDURE CALL PROTOCOL
 =================================================
 
-The following section presents a proof of concept called `Grisbr`, a Ruby
+Section \ref{grisbersec} presents a proof of concept called `Grisbr`, a Ruby
 library that performs matrix multiplication by sending requests to a Python
 server. This demonstrates the first part of the scheme -- the remote procedure
 call using JSON over UNIX pipes. We evaluate the performance of this technique
 for multiplication of large and small matrices.
 
-The section after that presents `Bifrost`, a generalized version of `Grisbr`
+Section \ref{bifrostsec} presents `Bifrost`, a generalized version of `Grisbr`
 that can load any module or package, generally handle most functions, and even
 use foreign language objects in the client space.
 
-## `Grisbr` -- matrix multiplication proof of concept
+## `Grisbr` -- matrix multiplication proof of concept {#grisbersec}
 
 In Ruby, matrix multiplication is done via the
 [Matrix#*](http://www.ruby-doc.org/stdlib-2.0.0/libdoc/matrix/rdoc/Matrix.html#method-i-2A)
@@ -288,7 +288,7 @@ generalizing the bridging technique in two ways:
 
 -   Use **object proxies** to allow for intermediate results.
 
-## `Bifrost` -- General Protocol
+## `Bifrost` -- General Protocol {#bifrostsec}
 
 Our full protocol will take the result from `Grisbr` and combine it with
 introspection and object proxies for a general solution.
