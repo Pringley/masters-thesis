@@ -15,7 +15,8 @@ thesisabstract: |
     Abstract text goes here.
 
 thesisappendix: |
-    # SOURCE
+    SOURCE
+    ======
 
     This thesis was generated using John Macfarlane's Pandoc as a frontend for
     LaTeX as a renderer. Source for the thesis is available at
@@ -31,9 +32,11 @@ documentclass: thesis
 numbersections: true
 ...
 
-# INTRODUCTION
+INTRODUCTION
+============
 
-# BIFROST: A DYNAMIC REMOTE PROCEDURE CALL PROTOCOL
+BIFROST: A DYNAMIC REMOTE PROCEDURE CALL PROTOCOL
+=================================================
 
 ## `Grisbr` -- matrix multiplication proof of concept
 
@@ -443,7 +446,9 @@ matrices, and retrieving the result from the returned object proxy.
     ```javascript
     { "result": [[8, 5], [20, 13]] }
     ```
-# CASE STUDY OF APPROACHES TO FINDING PATTERNS IN CITATION NETWORKS
+
+CASE STUDY OF APPROACHES TO FINDING PATTERNS IN CITATION NETWORKS
+=================================================================
 
 ## Background
 
@@ -830,4 +835,5 @@ mean outdegree more than *double* that of the entire dataset.
 By contribution factor analysis, each of the top 10 (except Samsung) still
 exceeded the expected ratio.
 
-# CONCLUSION
+CONCLUSION
+==========
