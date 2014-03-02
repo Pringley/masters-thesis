@@ -30,6 +30,7 @@ thesisbibliography: |
 
 documentclass: thesis
 numbersections: true
+links-as-notes: true
 ...
 
 INTRODUCTION
