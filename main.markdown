@@ -247,18 +247,21 @@ p Grisbr.multiply(a, b)
 
 ### Results for `Grisbr`
 
-The table below shows a breakdown of runtimes for native Ruby, the bridge, and
-straight NumPy on matrices with various sizes:
+Table \ref{grisbrruntime} shows a breakdown of runtimes for native Ruby, the
+bridge, and straight NumPy on matrices with various sizes:
 
-    +--------+-------+---------+---------+
-    |        | 2x2   | 128x128 | 512x512 |
-    +========+=======+=========+=========+
-    | Native |  .08s |    .79s |  45.50s |
-    +--------+-------+---------+---------+
-    | Bridge |  .19s |    .27s |   1.48s |
-    +--------+-------+---------+---------+
-    | Numpy  |  .09s |    .10s |    .28s |
-    +--------+-------+---------+---------+
++--------+-------+---------+---------+
+|        | 2x2   | 128x128 | 512x512 |
++========+=======+=========+=========+
+| Ruby   |  .08s |    .79s |  45.50s |
++--------+-------+---------+---------+
+| Grisbr |  .19s |    .27s |   1.48s |
++--------+-------+---------+---------+
+| Python |  .09s |    .10s |    .28s |
++--------+-------+---------+---------+
+
+Table: Run time comparison for matrix multiplication with `Grisbr`
+\label{grisbrruntime}
 
 On the 512 by 512 matrix, we saw a 30x speedup using the bridge!
 
@@ -637,7 +640,8 @@ In our data, 89% of patents have fewer than 5 citations, and 99% have fewer
 than 50. Nevertheless, there is a small group of slightly over fifty patents
 with at least a hundred citations each.
 
-The top ten most-cited patents in our dataset are shown in a table below:
+The top ten most-cited patents in our dataset are shown in Table
+\ref{topindegree}.
 
  applnID  indegree
 -------- ---------
@@ -651,6 +655,9 @@ The top ten most-cited patents in our dataset are shown in a table below:
 53608703       213
 54068562       213
 23000850       203
+
+Table: Top ten most-cited patents
+\label{topindegree}
 
 ##### Computation
 
@@ -673,7 +680,7 @@ For each patent in our dataset, we calculated:
 -   `indegree` -- number of forward citations
 -   `indegree_rank` -- relative numerical rank of the patent (by indegree)
 
-The following chart shows the top ten patents sorted by PageRank:
+Table \ref{toppagerank} shows the top ten patents sorted by PageRank.
 
  applnID  pagescore  page_rank  indegree  indegree_rank
 --------  ---------  ---------  --------  -------------
@@ -687,6 +694,9 @@ The following chart shows the top ten patents sorted by PageRank:
 53608703   0.000193          8       213              8
 46666643   0.000173          9       235              7
 47823143   0.000168         10        47            342
+
+Table: Top ten patents by PageRank
+\label{toppagerank}
 
 Within our dataset, PageRank and indegree are correlated with a Pearson
 product-moment coefficient of $r=.80$.
@@ -723,8 +733,8 @@ patents, we computed two measures of overlapping:
     example, the  second cluster contains the seed patent used to generate the
     first cluster, along with three others from our original ten seeds)
 
-The following chart shows the value of `percentunique` and `bignodes` for each
-of the ten clusters:
+Table \ref{clusteruniqueness} shows the value of `percentunique` and `bignodes`
+for each of the ten clusters:
 
  clustersize  percentunique  bignodes
 ------------ -------------- ---------
@@ -738,6 +748,9 @@ of the ten clusters:
          213       0.985915         0
          213       0.464789         0
          203       0.226601         0
+
+Table: Uniqueness measures for clusters of patents
+\label{clusteruniqueness}
 
 Looking at `percentunique`, many clusters have a good deal over overlap, with
 unique contributions as low as 10%, although others are up to 98% unique. Our
@@ -866,10 +879,10 @@ the results:
 #### Date partitioning
 
 Another interesting approach is to look at the filing date of the patents.
-Below is a histogram of number of patents by filing date.
+Table \ref{patentdatehist} histogram of number of patents by filing date.
 
-```
 date range	                count
+-------------------------   ------
 1940-11-12 to 1945-07-06	1
 1945-07-06 to 1950-02-28	6
 1950-02-28 to 1954-10-23	107
@@ -885,16 +898,19 @@ date range	                count
 1996-08-25 to 2001-04-19	8103
 2001-04-19 to 2005-12-12	16019
 2005-12-12 to 2010-08-06	5040
-```
+
+Table: Histogram of patents by filing date.
+\label{patentdatehist}
 
 We can partition each company's patents into thirds -- that is, `samsung0`
 contains the first chronological third of Samsung's patents, `samsung1`
 contains the second third, and `samsung2` contains the final third.
 
-We can calculate normalized outdegree for each third:
+We can calculate normalized outdegree for each third, shown in Table
+\ref{normoutdegbydatepart}.
 
-```
 company    partition  start       end         normalizedoutdeg    count  totalcount
+--------   ---------  ----------- ----------- ------------------  ------ ----------
 samsung    0          1989-05-30  2004-06-28  2.6858168761220824  557    1673
 samsung    1          2004-06-28  2005-11-30  1.3375224416517055  557    1673
 samsung    2          2005-12-02  2010-07-13  0.5116279069767442  559    1673
@@ -925,7 +941,9 @@ philips    2          2004-07-09  2009-06-03  1.326996197718631   263    789
 kodak      0          1965-03-25  2001-01-30  23.63529411764706   255    767
 kodak      1          2001-02-02  2003-09-23  4.670588235294118   255    767
 kodak      2          2003-09-24  2008-02-25  1.7042801556420233  257    767
-```
+
+Table: Normalized outdegree for date partitions
+\label{normoutdegbydatepart}
 
 ## Results
 
