@@ -1026,3 +1026,107 @@ exceeded the expected ratio.
 
 CONCLUSION
 ==========
+
+The presented `Bifrost` protocol can dynamically and effectively generate
+cross-language bindings for arbitrary libraries, even ones that make heavy use
+of objects.
+
+This is applicable in many situations:
+
+1.  **Performance**
+
+    Our original example is performance-based -- Ruby lacks sufficiently
+    performant libraries for linear algebra. Bifrost allows the use of NumPy in
+    Ruby, and the speed gains from the faster library far outweigh the data
+    marshalling costs for all but the smallest matrices.
+
+2.  **Implementations**
+
+    Another powerful Python library is `NetworkX`, which has implementations
+    for hundreds of common graph algorithms. Its performance is not
+    particularly better than Ruby, but using it would save the time of
+    reimplementing hundreds of algorithms.
+
+    Object proxies allow very simple use of NetworkX in Ruby:
+
+    ```ruby
+    require 'rubifrost'
+
+    # Establish connection to a Python bifrost server.
+    python = RuBifrost.python
+
+    # Methods that return objects (such as networkx.Graph) instead return object
+    # proxies, which in turn have all the methods of the object.
+    NetworkX = python.import 'networkx'
+    graph = NetworkX.Graph()
+    graph.add_edges_from([
+      [1, 2], [1, 3], [2, 3],
+      [5, 6], [5, 8], [6, 7]
+    ])
+
+    # Object proxies can also be used as arguments for other methods. In addition,
+    # complicated nested objects can be returned as results.
+    p NetworkX.connected_components(graph)
+    # => [[8, 5, 6, 7], [1, 2, 3]]o``
+    ```
+
+    In Chapter \ref{patentchapter}, we use this to explore a network of
+    citations on LED patents.
+
+3.  **Cross-runtime**
+
+    Jython is a port of Python to the Java runtime, which allows it to natively
+    interface with Java libraries. For an enterprise codebase written primarily
+    in Java, this is extremely convenient.
+
+    However, Jython cannot use any C or FORTRAN based libraries -- including
+    NumPy! If we want to perform complicated linear algebra in Jython, we would
+    formerly be stuck using JNI (Java Native Interface), which requires lots of
+    glue code.
+
+    Instead, Bifrost allows a quick bridge between the Java and C runtimes,
+    dynamically connecting Jython to CPython.
+
+    An extract from the source of a Jython Bifrost client is shown below:
+
+    ```python
+    from java.io import BufferedReader, InputStreamReader, BufferedWriter, OutputStreamWriter
+    from java.lang import ProcessBuilder
+    bifrost_cmd = ['python3', '-mpybifrost.server']
+    process = ProcessBuilder(bifrost_cmd).start()
+    input_stream = process.getInputStream()
+    self.stdin = BufferedWriter(OutputStreamWriter(process.getOutputStream()))
+    self.stdout = BufferedReader(InputStreamReader(process.getInputStream()))
+    ```
+
+    (The remainder is available in the appendix, but it is very similar to the
+    Ruby client.)
+
+    This allows us to easily use NumPy from Jython:
+
+    ```python
+    bridge = cpython()
+
+    numpy = bridge.import_module('numpy')
+    print numpy.mean([1,2,3,4,5])
+    # => 3.0
+    ```
+
+## Future improvements
+
+1.  **Cross-platform**.
+
+    The current implementation is very UNIX-specific, using forked processes
+    and pipes. Instead, once could use flat files, databases, HTTP, or a
+    message bus of some sort as the transport layer for the JSON requests.
+
+2.  **Method caching**.
+
+    The current implementation sends a request to the server for every method
+    call. It might be possible to cache some results (such as `length` for an
+    array) to avoid overloading the server. This may require some glue code.
+
+3.  **Optional glue code**.
+
+    The protocol could be extended with user-defined flags to allow custom glue
+    code where performance or implemenation quirks require them.
