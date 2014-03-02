@@ -12,7 +12,21 @@ thesisacknowledgement: |
     Acknowledgement text goes here.
 
 thesisabstract: |
-    Abstract text goes here.
+    A simple strategy is presented for dynamically interpreting remote procedure
+    calls in scripting languages, resulting in the ability to transparently use
+    libraries from both languages in a single program. The protocol described
+    handles complex, nested arguments and object-oriented libraries.
+
+    We will first perform a proof-of-concept for matrix multiplication in Ruby
+    (`Grisbr`), showing the performance of a manual bridge to Python very similar
+    to our intended protocol.
+
+    Then, we will present our full general protocol (`Bifrost`). Example
+    implementations show two useful bridges: one between Ruby and Python, and
+    another between two different Python runtimes.
+
+    To demonstrate the robustness of `Bifrost`, it will be used in the analysis
+    of a dataset including a network of LED patents and their metadata.
 
 thesisappendix: |
     SOURCE
