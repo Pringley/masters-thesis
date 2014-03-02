@@ -616,8 +616,8 @@ matrices, and retrieving the result from the returned object proxy.
     { "result": [[8, 5], [20, 13]] }
     ```
 
-CASE STUDY OF APPROACHES TO FINDING PATTERNS IN CITATION NETWORKS {#patentchapter}
-=================================================================
+CASE STUDY OF APPROACHES TO FINDING PATTERNS IN LED PATENT CITATION NETWORKS {#patentchapter}
+============================================================================
 
 To highlight the robustness of the protocol as-written for many libraries, the
 following case study was performed in Ruby, using Bifrost to access Python
