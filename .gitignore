@@ -1,3 +1,10 @@
+## Build files
+thesis.pdf
+intro.tex
+bifrost.tex
+citenet.tex
+conclusion.tex
+
 ## Vim
 .*.swp
 *~
