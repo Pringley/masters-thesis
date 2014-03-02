@@ -135,9 +135,24 @@ We aim to do this by using:
 -   **Remote procedure call** over UNIX pipes to cross runtimes
 -   **Language introspection** to eschew configuration files
 
-The next chapter demonstrates our technique.
+## Outline
 
-BIFROST: A DYNAMIC REMOTE PROCEDURE CALL PROTOCOL
+Below is a sketch of the thesis chapters:
+
+-   **Chapter \ref{bifrostchapter}** presents a protocol for implementing a
+    dynamic language binding with remote procedure calls in JSON.
+
+    -   **Section \ref{grisbersec}** begins with a proof-of-concept to
+        demonstrate the practicality of the technique.
+
+    -   **Section \ref{bifrostsec}** shows a fully realized protocol and
+        describes its implementation in Python and Ruby.
+
+-   **Chapter \ref{patentchapter}** demonstrates the use of this protocol to
+    access Python libraries from the Ruby language in a case study of LED
+    patents and metadata.
+
+BIFROST: A DYNAMIC REMOTE PROCEDURE CALL PROTOCOL {#bifrostchapter}
 =================================================
 
 Section \ref{grisbersec} presents a proof of concept called `Grisbr`, a Ruby
