@@ -348,6 +348,45 @@ The server should notice the error and respond with a message:
 { "error": "method \"asdfasdfasdf\" does not exist" }
 ```
 
+#### Non-string dictionary keys
+
+In JSON, all dictionary keys *must* be strings. However, many libraries use
+dictionaries to map non-string objects -- for example, to create a Graph using
+the NetworkX library for Python, one would write something like this:
+
+```python
+networkx.DiGraph({1: [2, 4], 2: [3]})
+```
+
+The dictionary is an adjacency list for a directed (one-way) graph -- node 1 is
+adjacent to 2 and 4; node 2 is adjacent to 3.
+
+This is a simple and common use case, but if we want to request this function
+call over our protocol, **we couldn't use a native JSON dictionary to represent
+this, since the keys are not strings!**
+
+Instead, we will define an alternative (and optional) syntax for dictionaries
+with non-string keys. Instead of using a mapping type to represent the
+dictionary, just use a list of lists with a special wrapper:
+
+```javascript
+/* naive way -- INVALID JAVASCRIPT */
+{1: 2, 3: 4}
+
+/* BiFrost way -- marked list of lists */
+{"__bf_dict__": [[1, 2], [3, 4]]}
+```
+
+For example, the NetworkX call would be represented as:
+
+```javascript
+{
+    "method": "DiGraph",
+    "oid": 9,
+    "params": {"__bf_dict__": [[1, [2, 4]], [2, [3]]]}
+}
+```
+
 ### Dynamic introspection
 
 The `Grisbr` implementation hard-coded the server's reaction to a response --
@@ -413,7 +452,7 @@ This returns an **object proxy** -- essentially just an empty container with
 the object ID it represents.
 
 ```javascript
-{ "result": {"__oid__": 64} }
+{ "result": {"__bf_oid__": 64} }
 ```
 
 Then the client can use this new object ID to call methods on that object. For
@@ -424,7 +463,7 @@ parameter for `numpy.transpose`:
 {
     "method": "transpose",
     "oid": 42,
-    "params": [ {"__oid__": 64} ]
+    "params": [ {"__bf_oid__": 64} ]
 }
 ```
 
@@ -432,7 +471,7 @@ The response will be yet *another* object proxy representing the transposed
 matrix.
 
 ```javascript
-{ "result": {"__oid__": 144} }
+{ "result": {"__bf_oid__": 144} }
 ```
 
 To actually view the transposed matrix, we can call the `ndarray.tolist()`
@@ -492,7 +531,7 @@ new message used to request a module:
 The response is then simply an object proxy representing the module.
 
 ```javascript
-{ "result": {"__oid__": 42} }
+{ "result": {"__bf_oid__": 42} }
 ```
 
 This elegantly solves any namespacing issues between modules without any
@@ -514,7 +553,7 @@ matrices, and retrieving the result from the returned object proxy.
     Response: an object proxy representing the module
 
     ```javascript
-    { "result": {"__oid__": 42} }
+    { "result": {"__bf_oid__": 42} }
     ```
 
 2.  **Multiply the matrices.**
@@ -536,7 +575,7 @@ matrices, and retrieving the result from the returned object proxy.
     multiplication
 
     ```javascript
-    { "result": {"__oid__": 101} }
+    { "result": {"__bf_oid__": 101} }
     ```
 
 3.  **Extract native types from object proxy**
@@ -551,7 +590,7 @@ matrices, and retrieving the result from the returned object proxy.
         "method": "tolist",
         "oid": 101,
         "params": [
-            {"__oid__": 101}
+            {"__bf_oid__": 101}
         ]
     }
     ```
