@@ -93,8 +93,8 @@ $endif$
 \fi
 \hypersetup{breaklinks=true,
             bookmarks=true,
-            pdfauthor={$author-meta$},
-            pdftitle={$title-meta$},
+            pdfauthor={$author$},
+            pdftitle={$title$},
             colorlinks=true,
             citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
             urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
@@ -131,7 +131,7 @@ $if(lang)$
 $endif$
 
 \thesistitle{$title$}
-\author{$for(author)$$author$$sep$ \and $endfor$}
+\author{$author$}
 \degree{$thesisdegree$}
 \department{$thesisdepartment$}
 \thadviser{$thesisadviser$}
