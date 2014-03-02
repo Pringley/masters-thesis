@@ -1,10 +1,12 @@
 ---
 title: Dynamic language bridges using remote procedure call
-author: Ben Pringle
+author: Benjamin Pringle
 
 thesisdegree: Master of Science
 thesisdepartment: Computer Science
-thesisadviser: "Mukkai S. Krishnamoorthy"
+thesisadviser: Mukkai S. Krishnamoorthy
+thesismemberone: David L. Spooner
+thesismembertwo: Bülent Yener
 thesissubmitdate: March 2014
 thesisgraddate: May 2014
 
@@ -51,6 +53,7 @@ thesisbibliography: |
 documentclass: thesis
 numbersections: true
 links-as-notes: true
+classoption: [chap]
 ...
 
 INTRODUCTION

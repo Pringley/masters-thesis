@@ -341,7 +341,7 @@
  \def\author#1{\gdef\@author{#1}}
  \def\degree#1{\gdef\@degree{#1}}
  \def\department#1{\gdef\@department{#1}}
- \newcount\numcomm \numcomm=1
+ \newcount\numcomm \numcomm=3
  \def\signaturelines#1{\numcomm=#1}
  \def\thadviser#1{\gdef\@thadviser{#1}} 
  \def\projadviser#1{\gdef\@projadviser{#1}} \projadviser{*}
