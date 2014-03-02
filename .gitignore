@@ -1,9 +1,6 @@
 ## Build files
 thesis.pdf
-intro.tex
-bifrost.tex
-citenet.tex
-conclusion.tex
+intermediate.tex
 
 ## Vim
 .*.swp

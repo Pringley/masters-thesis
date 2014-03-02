@@ -6,14 +6,27 @@ PANDOC = pandoc
 FLAGS = --chapter \
 		--smart
 
+INTERMEDIATE = intermediate.tex
+DEPENDENCIES = $(SOURCE) $(TEMPLATE)
+
 .PHONY: clean
 
-$(OUTPUT): $(SOURCE) $(TEMPLATE)
+all: $(INTERMEDIATE) $(OUTPUT)
+
+$(OUTPUT): $(DEPENDENCIES)
 	$(PANDOC) $(FLAGS) \
-			  --output $(OUTPUT) \
+			  --output $@ \
 			  --template $(TEMPLATE) \
-			  -- \
-			  $(SOURCE)
+			  -- $<
+
+# intermediate TeX
+$(INTERMEDIATE): $(DEPENDENCIES)
+	$(PANDOC) $(FLAGS) \
+			  --to latex \
+			  --no-highlight \
+			  --output $@ \
+			  --template $(TEMPLATE) \
+			  -- $<
 
 clean:
 	rm -f $(OUTPUT)
