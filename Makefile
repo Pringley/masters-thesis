@@ -3,7 +3,8 @@ SOURCE = main.markdown
 TEMPLATE = template.tex
 
 PANDOC = pandoc
-FLAGS = --smart --chapter
+FLAGS = --chapter \
+		--smart
 
 .PHONY: clean
 
