@@ -1,5 +1,5 @@
 ---
-title: Dynamic language bridges using remote procedure call
+title: Dynamic language bridges and applications in LED patent citation analysis
 author: Benjamin Pringle
 
 thesisdegree: Master of Science
