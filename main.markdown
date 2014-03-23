@@ -44,11 +44,7 @@ thesisappendix: |
     LaTeX as a renderer. Source for the thesis is available at
     <http://github.com/Pringley/masters-thesis>.
 
-thesisbibliography: |
-    \bibitem{thisbook} This is the first item in the Bibliography.
-    Let's make it very long so it takes more than one line.
-    Let's make it very long so it takes more than one line.
-    \bibitem{anotherbook} The second item in the Bibliography.
+biblio-files: references.bib
 
 documentclass: thesis
 numbersections: true

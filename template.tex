@@ -43,9 +43,10 @@ $if(natbib)$
 \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 $endif$
 $if(biblatex)$
-\usepackage{biblatex}
+\usepackage[backend=biber]{biblatex}
 $if(biblio-files)$
-\bibliography{$biblio-files$}
+%\bibliography{$biblio-files$}
+\addbibresource{$biblio-files$}
 $endif$
 $endif$
 $if(listings)$
@@ -171,14 +172,11 @@ $include-before$
 $endfor$
 $body$
 
-$if(thesisbibiliography)$
-\specialhead{LITERATURE CITED}
-\begin{singlespace}
-\begin{thebibliography}{99}
-$thesisbibliography$
-\end{thebibliography}
-\end{singlespace}
-$endif$
+\defbibheading{bibliography}[LITERATURE CITED]{%
+\specialhead{#1}}
+%\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+%\bibliography{$biblio-files$}
+\printbibliography
 
 \appendix
 \addtocontents{toc}{\parindent0pt\vskip12pt APPENDICES}
