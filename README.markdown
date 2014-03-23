@@ -10,6 +10,7 @@ required:
 
 -   `pandoc` (John Macfarlane's document converter, [pandoc](http://johnmacfarlane.net/pandoc/))
 -   `pdflatex` (for example, from [TexLive](https://www.tug.org/texlive/))
+-   [`biber`](http://biblatex-biber.sourceforge.net) for citations
 
 The main content for the thesis is located in `main.markdown`.
 
