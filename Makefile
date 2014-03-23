@@ -35,7 +35,6 @@ $(OUTPUT): $(INTERMEDIATE)
 $(INTERMEDIATE): $(DEPENDENCIES)
 	$(PANDOC) $(PANDOC_FLAGS) \
 			  --to latex \
-			  --no-highlight \
 			  --biblatex \
 			  --output $@ \
 			  --template $(TEMPLATE) \
