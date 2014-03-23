@@ -86,23 +86,24 @@ and Java programs.
 For languages with a common link to C, the Foreign Function Interface (FFI) is
 a powerful tool for passing types across a bridge.
 
-RubyPython uses FFI to dynamically generate a bridge between the C
+RubyPython [@rubypython] uses FFI to dynamically generate a bridge between the C
 implementation of Ruby and CPython.
 
 This is an excellent approach but quickly becomes difficult when bridging
 across runtimes. For example, Java uses JNI (Java Native Interface) for foreign
-function calls to C. Prior art exists trying to connect Jython and CPython, but
-the restriction on types makes things difficult. Many standard libraries are
-not functional, and NumPy also does not work using this technique.
+function calls to C. Prior art exists trying to connect Jython and CPython
+[@jyni], but the restriction on types makes things difficult. Many standard
+libraries are not functional, and NumPy also does not work using this
+technique.
 
 ### Remote Procedure Call
 
 The most robust technique for language bridging is remote procedure call --
 send requests through a channel to a server running the other language.
 
-Excellent frameworks exist such as Apache Thrift (used extensively by
-Facebook). However, these require extensive configuration for each function
-that needs bridging:
+Excellent frameworks exist such as Apache Thrift [@apachethrift], which was
+created and extensively used by Facebook. However, these require extensive
+configuration for each function that needs bridging, such as the example below:
 
 ```
 struct UserProfile {
@@ -187,11 +188,11 @@ To speed this up, we could write the function in C, which Ruby supports, but
 this is both tedious and error-prone.
 
 Ruby has a fast *and* high-level matrix implementation in the works -- it's
-called [NMatrix](http://sciruby.com/nmatrix/) from
-[SciRuby](http://sciruby.com/). Unfortunately, this is still alpha software.
+called NMatrix [@nmatrix] from SciRuby [@sciruby]. Unfortunately, this is still
+alpha software.
 
-On the other hand, Python has [NumPy](http://www.numpy.org/), which is both
-stable and feature-rich.
+On the other hand, Python has NumPy [@jones01], which is both stable and
+feature-rich.
 
 This proof-of-concept shows that the use of a Ruby-to-Python bridge is a
 feasible method for matrix multiplication. The bridge uses
@@ -309,8 +310,8 @@ introspection and object proxies for a general solution.
 The basic idea remains the same. The client will create a subprocess running a
 server in the destination language which will receive requests over JSON.
 
-The protocol is inspired by [JSON-RPC](http://json-rpc.org/), but it is not
-compatible. (Changes were made to fit the requirements of this project.)
+The protocol is inspired by JSON-RPC [@jsonrpc], but it is not compatible.
+(Changes were made to fit the requirements of this project.)
 
 For example, to request `numpy.mean`, a NumPy function to calculate the mean of
 an array of numbers from 1 to 4, the request might look like:
