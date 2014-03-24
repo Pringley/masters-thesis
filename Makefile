@@ -1,35 +1,39 @@
 SOURCE = main.markdown
 TEMPLATE = template.tex
+SLIDE_SOURCE = slides.markdown
 
 BASENAME = thesis
 INTERMEDIATE = $(BASENAME).tex
 OUTPUT = $(BASENAME).pdf
+SLIDE_OUTPUT = slides.pdf
 
 PANDOC = pandoc
 PANDOC_FLAGS = --chapter \
 		--smart
 
 LATEX = pdflatex
-#LATEX_FLAGS = --output $(OUTPUT)
 BIBTEX = biber
 
 BIBLIOGRAPHY = references.bib
-MAKEFILE = Makefile
 
-DEPENDENCIES = $(SOURCE) $(TEMPLATE) $(BIBLIOGRAPHY) $(MAKEFILE)
+DEPENDENCIES = $(SOURCE) $(TEMPLATE) $(BIBLIOGRAPHY)
 
 AUXFILES = *.aux *.lof *.log *.lot *.fls *.out *.toc *.bbl *.bcf *.blg \
 		   *-blx.aux *-blx.bib *.run.xml
 
-.PHONY: clean
+.PHONY: clean all thesis slides
 
-all: $(OUTPUT)
+all: slides thesis
+
+thesis: $(OUTPUT)
+
+slides: $(SLIDE_OUTPUT)
 
 $(OUTPUT): $(INTERMEDIATE)
-	$(LATEX) $(LATEX_FLAGS) -- $(BASENAME) && \
+	$(LATEX) $(BASENAME) && \
 		$(BIBTEX) $(BASENAME) && \
-		$(LATEX) $(LATEX_FLAGS) -- $(BASENAME) && \
-		$(LATEX) $(LATEX_FLAGS) -- $(BASENAME)
+		$(LATEX) $(BASENAME) && \
+		$(LATEX) $(BASENAME)
 
 # intermediate TeX
 $(INTERMEDIATE): $(DEPENDENCIES)
@@ -39,8 +43,16 @@ $(INTERMEDIATE): $(DEPENDENCIES)
 			  --output $@ \
 			  --template $(TEMPLATE) \
 			  -- $<
+
+$(SLIDE_OUTPUT): $(SLIDE_SOURCE)
+	$(PANDOC) --smart \
+				--chapter \
+				--to beamer \
+				--output $@ \
+				-- $<
+
 clean:
 	rm -f $(AUXFILES)
 
 distclean: clean
-	rm -f $(OUTPUT) $(INTERMEDIATE)
+	rm -f $(OUTPUT) $(INTERMEDIATE) $(SLIDE_OUTPUT)
