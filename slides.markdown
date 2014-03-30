@@ -223,6 +223,63 @@ $$\begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix}
 \to
 \begin{bmatrix}1 & 3 \\ 2 & 4\end{bmatrix}$$
 
+## Protocol overview -- JSON types
+
+Parameters and results are represented as JSON types when possible.
+
+Scalar types:
+
+-   string
+-   number (`int`, `float`)
+-   bool
+-   `nil`
+
+Compound types:
+
+-   array
+-   object (also called map, dictionary)
+
+## Protocol overview -- non-string keys
+
+In JSON, all dictionary keys *must* be strings.
+
+Use case for non-string keys: Python NetworkX graph library.
+
+-   Create a directed graph from adjacency list:
+
+    ```python
+    networkx.DiGraph({1: [2, 4], 2: [3]})
+    ```
+
+This dictionary has integer keys, not string-keys!
+
+## Protocol overview -- non-string keys
+
+How to encode Python dictionary `{1: 2, 3: 4}` in JSON as a parameter?
+
+```javascript
+/* naive way -- INVALID JSON */
+{1: 2, 3: 4}
+
+/* BiFrost way -- marked list of lists */
+{"__bf_dict__": [[1, 2], [3, 4]]}
+```
+
+## Protocol overview -- non-string keys
+
+We can represent this NetworkX call:
+```python
+networkx.DiGraph({1: [2, 4], 2: [3]})
+```
+
+Using the following Bifrost request:
+```javascript
+{ "method": "DiGraph",
+  "oid": 9,
+  "params": {"__bf_dict__": [[1, [2, 4]], [2, [3]]]}
+}
+```
+
 # Case Study of Approaches to Finding Patterns in LED Patent Citation Networks
 
 # Conclusion
