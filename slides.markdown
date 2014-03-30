@@ -497,3 +497,50 @@ For citation networks, we can use a simple **directed** clustering scheme:
 ![1-neighborhood of applnID=23000850 (203 nodes)](images/cluster10.pdf)
 
 # Conclusion
+
+## Summary
+
+Goal: zero-configuration cross-runtime bridge
+
+-   No glue code
+
+-   Works between bytecodes, runtimes, VMs, etc
+
+Solution: dynamic RPC
+
+-   Network protocol similar to JSON-RPC, sent over pipes
+
+-   Backend is *automatically generated* using introspection and
+    metaprogramming
+
+-   Client library uses proxy objects to make RPC calls transparent (i.e. the
+    code "looks like" regular use of the source language)
+
+## Results
+
+-   Bifrost protocol tested on:
+
+    -   CRuby to CPython
+    -   CPython to CPython
+    -   Jython to CPython (cross-runtime)
+
+-   Performance:
+
+    -   Acceptable for simple calls (2x slowdown)
+    -   Excellent for computation (up to 30x speedup)
+
+## Comparison to prior art
+
+-   Similar functionality to RubyPython when briding from Ruby to Python
+
+-   *Much* better functionality than JyNI when bridging from Jython to CPython
+
+    -   Support for NumPy, SciPy, and many standard libaries not possible under
+        JyNI
+
+-   Different strengths than Apache Thrift
+
+    -   Easier to use, faster to code
+    -   Slower to run, less robust
+
+# Questions
