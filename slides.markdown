@@ -412,7 +412,7 @@ How fast is matrix multiply?
 
 -   **NumPy** -- `numpy.dot`
 
--   **Ruby** -- standard library `Matrix#*`
+-   **Ruby** -- standard library Matrix#\*
 
 -   **Bridge** -- Bifrost from Ruby to Python, still using `numpy.dot`
 
