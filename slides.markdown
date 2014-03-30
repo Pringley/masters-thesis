@@ -106,6 +106,123 @@ Basic new idea: **dynamic RPC server** for scripting languages.
 
 # Bifrost: A Dynamic RPC Protocol
 
+## Protocol overview -- example 1 -- loading a module
+
+Example: request for the server to load the module NumPy
+
+```javascript
+{ "module": "numpy" }
+```
+
+Response:
+
+```javascript
+{ "result": {"__bf_oid__": 42} }
+```
+
+## Protocol overview -- example 2 -- simple request
+
+Example: request for `numpy.mean` of the array `[1, 2, 3, 4]`
+
+```javascript
+{
+    "method": "mean",
+    "oid": 42,
+    "params": [ [1, 2, 3, 4] ]
+}
+```
+
+Response:
+
+```javascript
+{ "result": 2.5 }
+```
+
+## Protocol overview -- fields
+
+Request:
+
+-   **`method`** is the name of the method to call.
+
+-   **`oid`** is the identifier for the destination-language object that
+    contains the method. In this case, `42` is the object ID (`oid`) for NumPy.
+
+-   **`params`** is an array of parameters for the method. In this case, there
+    is only one parameter, the array of numbers that we want the mean for
+    (`[1, 2, 3, 4]`).
+
+Response
+
+-   **`result`** contains the return value of the called method. Here, the
+    result is `2.5`.
+
+-   **`error`** is only defined if an error occurs, and contains an error
+    message.
+
+## Protocol overview -- object proxies
+
+Each object on the server is assigned an object ID (`oid`).
+
+Within the protocol, an object is represented using the magic string
+`"__bf_oid__"`.
+
+*Example*:
+
+```javascript
+{"__bf_oid__": 42}
+```
+
+## Protocol overview -- object proxies
+
+### Example: load a module
+
+```javascript
+{ "module": "numpy" }                   // request
+{ "result": {"__bf_oid__": 42} }        // response
+
+{ "method": "mean",                     // request
+  "oid": 42,
+  "params": [ [1, 2, 3, 4] ] }
+{ "result": 2.5 }                       // response
+```
+
+## Protocol overview -- object proxies
+
+### Example: transpose a matrix
+
+Construct a `numpy.ndarray` object.
+
+```javascript
+{ "method": "ndarray",                  // request
+  "oid": 42,
+  "params": [ [[1, 2], [3, 4]] ] }
+{ "result": {"__bf_oid__": 64} }        // response
+```
+
+Call the `transpose` method.
+
+```javascript
+{ "method": "transpose",                // request
+  "oid": 42,
+  "params": [ {"__bf_oid__": 64} ] }
+{ "result": {"__bf_oid__": 144} }       // response
+```
+
+## Protocol overview -- object proxies
+
+Get native array from `ndarray` using `tolist()`.
+
+```javascript
+{ "method": "tolist",                   // request
+  "oid": 144,
+  "params": [] }
+{ "result": [[1, 3], [2, 4]] }          // response
+```
+
+$$\begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix}
+\to
+\begin{bmatrix}1 & 3 \\ 2 & 4\end{bmatrix}$$
+
 # Case Study of Approaches to Finding Patterns in LED Patent Citation Networks
 
 # Conclusion
