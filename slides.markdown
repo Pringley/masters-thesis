@@ -280,6 +280,142 @@ Using the following Bifrost request:
 }
 ```
 
+## Implementation -- overview
+
+1.  Client initializes Bifrost by forking a server process in target language,
+    connected by two pipes.
+
+2.  Server initializes and waits for JSON-encoded requests on the client pipe.
+
+3.  Client makes requests and receives responses:
+
+    -   Write JSON-encoded request to client pipe, followed by a newline.
+    -   Read JSON-encoded response on server pipe, terminated by a newline.
+
+## Implementation -- dynamic introspection
+
+To avoid writing glue code, server must use introspection to discover methods.
+
+Example: Python server
+
+> **getattr**(*object*, *name*[, *default*])
+>
+> > Return the value of the named attribute of object. name must be a string.
+> > If the string is the name of one of the object’s attributes, the result is
+> > the value of that attribute. For example, getattr(x, 'foobar') is
+> > equivalent to x.foobar. If the named attribute does not exist, default is
+> > returned if provided, otherwise AttributeError is raised.
+
+## Implementation -- dynamic introspection
+
+```python
+def handle(request_json):
+    # Extract information from request.
+    request = json.loads(request_json)
+    parameter_list = request['params']
+    method_name = request['method']
+    object_id = request['oid']
+
+    # Look up object via ID from internal table.
+    obj = object_table[object_id]
+
+    # Look up the method name.
+    method = getattr(obj, method_name)
+
+    # Call method (with given params).
+    result = method(*parameter_list)
+    return result
+```
+
+## Implementation -- object proxies
+
+Client can also use metaprogramming to increase transparency and eliminate glue
+code.
+
+Example: Ruby client
+
+> **method\_missing(symbol[, \*args]) -> result**
+>
+> Invoked by Ruby when obj is sent a message it cannot handle. symbol is the
+> symbol for the method called, and args are any arguments that were passed to
+> it. By default, the interpreter raises an error when this method is called.
+> However, it is possible to override the method to provide more dynamic
+> behavior.
+
+## Implementation -- object proxies
+
+```ruby
+class ObjectProxy
+
+  def initialize oid
+    # Create a proxy for an object with specific ID
+    @oid = oid
+  end
+
+  def method_missing(method, *params)
+    # Forward all method calls to the server
+    send_request @oid, method, params
+  end
+
+end
+```
+
+## Implementation -- example
+
+Below is client code using a Ruby client and the Python server.
+
+```ruby
+require 'rubifrost'
+
+python = RuBifrost.python
+# => RuBifrost(server="python3 -mpybifrost.server")
+
+NumPy = python.import 'numpy'
+# => RuBifrost::Proxy(oid=42)
+
+NumPy.mean([1, 2, 3, 4, 5])
+# => 3.0
+```
+
+## Implementation -- example
+
+```ruby
+NetworkX = python.import 'networkx'
+# => RuBifrost::Proxy(oid=9)
+
+graph = NetworkX.Graph()
+# => RuBifrost::Proxy(oid=334)
+
+graph.add_edges_from([
+  [1, 2], [1, 3], [2, 3],
+  [5, 6], [5, 8], [6, 7]
+])
+# => nil
+
+NetworkX.connected_components(graph)
+# => [[8, 5, 6, 7], [1, 2, 3]]
+```
+
+## Performance
+
+How fast is matrix multiply?
+
++--------+-------+---------+---------+
+|        | 2x2   | 128x128 | 512x512 |
++========+=======+=========+=========+
+| NumPy  |  .09s |    .10s |    .28s |
++--------+-------+---------+---------+
+| Ruby   |  .08s |    .79s |  45.50s |
++--------+-------+---------+---------+
+| Bridge |  .19s |    .27s |   1.48s |
++--------+-------+---------+---------+
+
+-   **NumPy** -- `numpy.dot`
+
+-   **Ruby** -- standard library `Matrix#*`
+
+-   **Bridge** -- Bifrost from Ruby to Python, still using `numpy.dot`
+
 # Case Study of Approaches to Finding Patterns in LED Patent Citation Networks
 
 # Conclusion
