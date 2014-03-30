@@ -418,4 +418,82 @@ How fast is matrix multiply?
 
 # Case Study of Approaches to Finding Patterns in LED Patent Citation Networks
 
+## Technology
+
+-   Used Bifrost in Ruby to leverage scientific Python packages in a real-world
+    case study.
+
+-   Packages used (all Python-only):
+
+    -   NetworkX -- graph/network library
+    -   Pandas -- data transformation library
+    -   MatPlotLib -- plotting/visualization library
+
+* * * * *
+
+```ruby
+require 'rubifrost'
+
+# Connect to the Python server.
+python = RuBifrost.python
+
+# Load graph library.
+NetworkX = python.import('networkx')
+# Load data library.
+Pandas = python.import('pandas')
+# Load visualization library.
+PyPlot = python.import('matplotlib.pyplot')
+```
+
+## Overview
+
+A **citation network** is a **graph** representing citations between documents
+such as scholarly articles or patents.
+
+-   Each document is represented by a **node** in the graph.
+
+-   Each citation is represented by an **edge** connecting the *citing* node to
+    the *cited* node.
+
+We used a database of LED patent citations for this study, provided by
+Professor Ken Simons.
+
+## Basic statistics
+
+-   127,526 patents
+-   327,479 citations
+-   89% of patents have fewer than 5 citations
+-   99% have fewer than 50 citations
+-   Small group of $\approx 50$ patents with over 100 citations each
+
+* * * * *
+
+![Histogram of patents with under 50 citations](images/indeghist50below.pdf)
+
+* * * * *
+
+![Histogram of patents with 50 or more citations](images/indeghist50up.pdf)
+
+## Cluster by neighborhoods
+
+Most clustering techniques deal with **undirected graphs**.
+
+For citation networks, we can use a simple **directed** clustering scheme:
+
+-   Select a small number of highly cited patents as seeds.
+-   Each seed patent defines a cluster: all patents citing the seed are
+    members (its open 1-neighborhood).
+
+* * * * *
+
+![1-neighborhood of applnID=47614741 (444 nodes)](images/cluster1.pdf)
+
+* * * * *
+
+![1-neighborhood of applnID=45787627 (283 nodes)](images/cluster5.pdf)
+
+* * * * *
+
+![1-neighborhood of applnID=23000850 (203 nodes)](images/cluster10.pdf)
+
 # Conclusion
