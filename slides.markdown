@@ -116,7 +116,7 @@ Usually requires glue code on the client and/or server to
         -   Does not work with most of CPython standard library
         -   Does not work with NumPy, SciPy
 
-## New idea -- dynamic RPC
+## Contribution -- dynamic RPC
 
 Basic new idea: **dynamic RPC server** for scripting languages.
 
@@ -522,7 +522,7 @@ For citation networks, we can use a simple **directed** clustering scheme:
 
 # Conclusion
 
-## Summary
+## Summary of contribution
 
 Goal: zero-configuration cross-runtime bridge
 
