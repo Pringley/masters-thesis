@@ -77,7 +77,7 @@ Send requests from one language to another via network protocols.
 -   XML-RPC, SOAP -- general XML over HTTP protocol
 -   JSON-RPC -- similar to XML-RPC, uses
 
-Usually requires glue code on the client and/or server to
+Usually requires glue code on the client and/or server.
 
 ## Missing use case -- zero-configuration cross-runtime bridge
 
