@@ -4,6 +4,11 @@ author: Benjamin Pringle
 date: April 1, 2014
 ...
 
+## Acknowledgements
+
+Thank you to my advisor, **Mukkai Krishnamoorthy**, and to my other committee
+members, **Bülent Yener** and **David Spooner**.
+
 # Introduction
 
 ## Language bridges
