@@ -9,6 +9,25 @@ date: April 1, 2014
 Thank you to my advisor, **Mukkai Krishnamoorthy**, and to my other committee
 members, **Bülent Yener** and **David Spooner**.
 
+## Outline
+
+-   **Introduction**
+
+    -   Language bridges
+    -   Existing techniques
+
+-   **Bifrost: A Dynamic RPC Protocol**
+
+    -   Protocol
+    -   Implementation
+
+-   **Case Study of Approaches to Finding Patterns in LED Patent Citation
+    Networks**
+
+-   **Conclusion**
+
+    -   Comparison to prior art
+
 # Introduction
 
 ## Language bridges
