@@ -469,6 +469,14 @@ Pandas = python.import('pandas')
 PyPlot = python.import('matplotlib.pyplot')
 ```
 
+## Questions
+
+Given a database patents and citations between them:
+
+-   How do we identify "important" patents?
+
+-   Who produces these important patents -- big companies or small ones?
+
 ## Overview
 
 A **citation network** is a **graph** representing citations between documents
@@ -519,6 +527,73 @@ For citation networks, we can use a simple **directed** clustering scheme:
 * * * * *
 
 ![1-neighborhood of applnID=23000850 (203 nodes)](images/cluster10.pdf)
+
+## Importance metric
+
+Use raw citation count (indegree) or something more (i.e. PageRank)?
+
+page_rank  indegree_rank
+---------  -------------
+        1              1
+        2              2
+        3              4
+        4              5
+        5            172
+        6              6
+        7              3
+        8              8
+        9              7
+       10            342
+
+## Importance metric
+
+### Sidebar: implementation in Ruby
+
+Ruby lacks a sparse matrix library, so the resulting 100K by 100K matrix would
+take up around 10 GB of memory -- not workable on a laptop.
+
+Bifrost lets us use Python's superior tools for this job, completing in around
+1 minute -- and with only one line of code!
+
+-   SciPy's sparse matrix implementation
+-   NetworkX's already-written PageRank function
+
+```ruby
+scores = NetworkX.pagerank_scipy graph, max_iter = 200
+```
+
+## Metadata -- companies
+
+We approximate company size with the number of patents they have in our
+database.
+
+### Top 25 companies
+
+> `samsung` (1673), `semiconductor energy lab` (1437), `seiko` (1394), `sharp`
+> (1103), `panasonic` (1094), `sony` (937), `toshiba` (848), `sanyo (tokyo
+> sanyo electric)` (793), `philips` (789), `kodak` (767), `hitachi` (632),
+> `osram` (631), `nec` (621), `lg` (613), `idemitsu kosan co` (553), `canon`
+> (538), `pioneer` (525), `mitsubishi` (501), `rohm` (420), `tdk` (384),
+> `nichia` (370), `fujifilm` (369), `ge` (363), `sumitomo` (323), `lg/philips`
+> (293)
+
+## Average citations by company
+
+Below are the average number of citations given to each company's patents.
+
+1. `samsung` -- 11.51
+2. `semiconductor energy lab` -- 14.91
+3. `seiko` -- 13.06
+4. `sharp` -- 13.39
+5. `panasonic` -- 13.13
+6. `sony` -- 13.23
+7. `toshiba` -- 14.22
+8. `sanyo (tokyo sanyo electric)` -- 13.86
+9. `philips` -- 14.47
+10. `kodak` -- 19.98
+
+The global average for all patents is only 5.60. Big companies *do* seem to
+produce better patents.
 
 # Conclusion
 
