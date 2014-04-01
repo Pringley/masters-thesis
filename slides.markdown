@@ -630,7 +630,8 @@ Solution: dynamic RPC
 
 ## Comparison to prior art
 
--   Similar functionality to RubyPython when briding from Ruby to Python
+-   Similar functionality to RubyPython when bridging from Ruby
+    to Python
 
 -   *Much* better functionality than JyNI when bridging from Jython to CPython
 
