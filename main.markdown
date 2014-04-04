@@ -1087,77 +1087,37 @@ contains the second third, and `samsung2` contains the final third.
 We can calculate normalized outdegree for each third, shown in Table
 \ref{normoutdegbydatepart}.
 
-\begin{longtable}[c]{@{}lllllll@{}}
+\begin{longtable}[c]{@{}lllll@{}}
 \caption{Normalized outdegree for date partitions
 \label{normoutdegbydatepart}}
 \\
 \hline\noalign{\medskip}
-company & partition & start & end & normalizedoutdeg & count &
-totalcount
+company & partition & normalizedoutdeg & count & totalcount
 \\\noalign{\medskip}
 \hline\noalign{\medskip}
-samsung & 0 & 1989-05-30 & 2004-06-28 & 2.6858168761220824 & 557 & 1673
+samsung & 0 & 2.6858168761220824 & 557 & 1673
 \\\noalign{\medskip}
-samsung & 1 & 2004-06-28 & 2005-11-30 & 1.3375224416517055 & 557 & 1673
+samsung & 1 & 1.3375224416517055 & 557 & 1673
 \\\noalign{\medskip}
-samsung & 2 & 2005-12-02 & 2010-07-13 & 0.5116279069767442 & 559 & 1673
+samsung & 2 & 0.5116279069767442 & 559 & 1673
 \\\noalign{\medskip}
-sel & 0 & 1982-02-09 & 2002-02-26 & 8.187891440501044 & 479 & 1437
+sel & 0 & 8.187891440501044 & 479 & 1437
 \\\noalign{\medskip}
-sel & 1 & 2002-02-28 & 2004-06-23 & 5.1941544885177455 & 479 & 1437
+sel & 1 & 5.1941544885177455 & 479 & 1437
 \\\noalign{\medskip}
-sel & 2 & 2004-06-25 & 2010-01-06 & 1.3528183716075157 & 479 & 1437
+sel & 2 & 1.3528183716075157 & 479 & 1437
 \\\noalign{\medskip}
-seiko & 0 & 1973-07-13 & 2002-02-22 & 5.644396551724138 & 464 & 1394
+seiko & 0 & 5.644396551724138 & 464 & 1394
 \\\noalign{\medskip}
-seiko & 1 & 2002-02-25 & 2004-01-21 & 2.543103448275862 & 464 & 1394
+seiko & 1 & 2.543103448275862 & 464 & 1394
 \\\noalign{\medskip}
-seiko & 2 & 2004-01-21 & 2009-06-18 & 0.9978540772532188 & 466 & 1394
+seiko & 2 & 0.9978540772532188 & 466 & 1394
 \\\noalign{\medskip}
-sharp & 0 & 1972-07-31 & 1994-02-22 & 4.809264305177112 & 367 & 1103
+kodak & 0 & 23.63529411764706 & 255 & 767
 \\\noalign{\medskip}
-sharp & 1 & 1994-02-25 & 2001-10-29 & 3.5476839237057223 & 367 & 1103
+kodak & 1 & 4.670588235294118 & 255 & 767
 \\\noalign{\medskip}
-sharp & 2 & 2001-10-31 & 2010-02-26 & 1.8130081300813008 & 369 & 1103
-\\\noalign{\medskip}
-panasonic & 0 & 1963-11-18 & 1997-10-31 & 3.4148351648351647 & 364 &
-1094
-\\\noalign{\medskip}
-panasonic & 1 & 1997-11-05 & 2002-02-21 & 3.6950549450549453 & 364 &
-1094
-\\\noalign{\medskip}
-panasonic & 2 & 2002-02-27 & 2010-03-05 & 2.2868852459016393 & 366 &
-1094
-\\\noalign{\medskip}
-sony & 0 & 1970-04-13 & 2000-09-11 & 4.064102564102564 & 312 & 937
-\\\noalign{\medskip}
-sony & 1 & 2000-09-14 & 2003-08-20 & 4.0576923076923075 & 312 & 937
-\\\noalign{\medskip}
-sony & 2 & 2003-08-28 & 2010-02-10 & 1.5878594249201279 & 313 & 937
-\\\noalign{\medskip}
-toshiba & 0 & 1969-08-25 & 1993-03-30 & 4.184397163120567 & 282 & 848
-\\\noalign{\medskip}
-toshiba & 1 & 1993-04-13 & 2001-04-27 & 6.1063829787234045 & 282 & 848
-\\\noalign{\medskip}
-toshiba & 2 & 2001-04-27 & 2010-03-23 & 2.3732394366197185 & 284 & 848
-\\\noalign{\medskip}
-sanyo & 0 & 1976-12-09 & 2000-03-17 & 6.943181818181818 & 264 & 793
-\\\noalign{\medskip}
-sanyo & 1 & 2000-03-17 & 2003-03-28 & 3.25 & 264 & 793
-\\\noalign{\medskip}
-sanyo & 2 & 2003-03-28 & 2009-01-15 & 1.4037735849056603 & 265 & 793
-\\\noalign{\medskip}
-philips & 0 & 1954-01-29 & 1999-09-08 & 6.011406844106464 & 263 & 789
-\\\noalign{\medskip}
-philips & 1 & 1999-09-08 & 2004-07-01 & 6.068441064638783 & 263 & 789
-\\\noalign{\medskip}
-philips & 2 & 2004-07-09 & 2009-06-03 & 1.326996197718631 & 263 & 789
-\\\noalign{\medskip}
-kodak & 0 & 1965-03-25 & 2001-01-30 & 23.63529411764706 & 255 & 767
-\\\noalign{\medskip}
-kodak & 1 & 2001-02-02 & 2003-09-23 & 4.670588235294118 & 255 & 767
-\\\noalign{\medskip}
-kodak & 2 & 2003-09-24 & 2008-02-25 & 1.7042801556420233 & 257 & 767
+kodak & 2 & 1.7042801556420233 & 257 & 767
 \\\noalign{\medskip}
 \hline
 \noalign{\medskip}
