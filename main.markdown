@@ -269,6 +269,7 @@ p Grisbr.multiply(a, b)
 Table \ref{grisbrruntime} shows a breakdown of runtimes for native Ruby, the
 bridge, and straight NumPy on matrices with various sizes:
 
+\Needspace{10\baselineskip}
 \begin{longtable}[c]{@{}llll@{}}
 \caption{Run time comparison for matrix multiplication with
 \texttt{Grisbr} \label{grisbrruntime}}
@@ -752,11 +753,12 @@ In our data, 89% of patents have fewer than 5 citations, and 99% have fewer
 than 50. Nevertheless, there is a small group of slightly over fifty patents
 with at least a hundred citations each.
 
-The top ten most-cited patents in our dataset are shown in Table
+The top eight most-cited patents in our dataset are shown in Table
 \ref{topindegree}.
 
+\Needspace{15\baselineskip}
 \begin{longtable}[c]{@{}rr@{}}
-\caption{Top ten most-cited patents \label{topindegree}}
+\caption{Top eight most-cited patents \label{topindegree}}
 \\
 \hline\noalign{\medskip}
 applnID & indegree
@@ -777,10 +779,6 @@ applnID & indegree
 46666643 & 235
 \\\noalign{\medskip}
 53608703 & 213
-\\\noalign{\medskip}
-54068562 & 213
-\\\noalign{\medskip}
-23000850 & 203
 \\\noalign{\medskip}
 \hline
 \noalign{\medskip}
@@ -809,6 +807,7 @@ For each patent in our dataset, we calculated:
 
 Table \ref{toppagerank} shows the top ten patents sorted by PageRank.
 
+\Needspace{20\baselineskip}
 \begin{longtable}[c]{@{}rllll@{}}
 \caption{Top ten patents by PageRank \label{toppagerank}}
 \\
@@ -878,6 +877,7 @@ patents, we computed two measures of overlapping:
 Table \ref{clusteruniqueness} shows the value of `percentunique` and `bignodes`
 for each of the ten clusters:
 
+\Needspace{15\baselineskip}
 \begin{longtable}[c]{@{}rrr@{}}
 \caption{Uniqueness measures for clusters of patents
 \label{clusteruniqueness}}
@@ -1039,6 +1039,7 @@ the results:
 Another interesting approach is to look at the filing date of the patents.
 Table \ref{patentdatehist} histogram of number of patents by filing date.
 
+\Needspace{15\baselineskip}
 \begin{longtable}[c]{@{}ll@{}}
 \caption{Histogram of patents by filing date. \label{patentdatehist}}
 \\
@@ -1087,6 +1088,7 @@ contains the second third, and `samsung2` contains the final third.
 We can calculate normalized outdegree for each third, shown in Table
 \ref{normoutdegbydatepart}.
 
+\Needspace{20\baselineskip}
 \begin{longtable}[c]{@{}lllll@{}}
 \caption{Normalized outdegree for date partitions
 \label{normoutdegbydatepart}}
