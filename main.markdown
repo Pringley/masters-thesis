@@ -265,7 +265,7 @@ bridge, and straight NumPy on matrices with various sizes:
 \Needspace{10\baselineskip}
 \begin{longtable}[c]{@{}llll@{}}
 \caption{Run time comparison for matrix multiplication with
-\texttt{Grisbr} \label{grisbrruntime}}
+\texttt{Grisbr}. \label{grisbrruntime}}
 
 \\
 \hline\noalign{\medskip}
@@ -731,9 +731,9 @@ The graph has 127,526 nodes and 327,479 edges.
 
 #### Forward citations (indegree)
 
-![Histogram of patents with under 50 citations](images/indeghist50below.pdf)
+![Histogram of patents with under 50 citations.](images/indeghist50below.pdf)
 
-![Histogram of patents with 50 or more citations](images/indeghist50up.pdf)
+![Histogram of patents with 50 or more citations.](images/indeghist50up.pdf)
 
 Popularized by @garfield64, the simplest way to determine a patent's relative
 importance is counting its forward citations -- that is, other patents which
@@ -751,7 +751,7 @@ The top eight most-cited patents in our dataset are shown in Table
 
 \Needspace{15\baselineskip}
 \begin{longtable}[c]{@{}rr@{}}
-\caption{Top eight most-cited patents \label{topindegree}}
+\caption{Top eight most-cited patents. \label{topindegree}}
 \\
 \hline\noalign{\medskip}
 applnID & indegree
@@ -805,7 +805,7 @@ Table \ref{toppagerank} shows the top ten patents sorted by PageRank.
 
 \Needspace{20\baselineskip}
 \begin{longtable}[c]{@{}rllll@{}}
-\caption{Top ten patents by PageRank \label{toppagerank}}
+\caption{Top ten patents by PageRank. \label{toppagerank}}
 \\
 \hline\noalign{\medskip}
 applnID & pagescore & page\_rank & indegree & indegree\_rank
@@ -840,12 +840,13 @@ product-moment coefficient of $r=.80$.
 
 ##### Computation
 
-We computed PageRank using `networkx.pagerank_scipy()` with `max_iter` set to
+We computed PageRank using \
+`networkx.pagerank_scipy()` with `max_iter` set to
 200 and a damping factor of $d=.85$ [@page99rank; @hagberg08].
 
 ### Clustering
 
-![Neighborhood sizes for top 20 cited patents](images/nhood_sizes.pdf)
+![Neighborhood sizes for top 20 cited patents.](images/nhood_sizes.pdf)
 
 As noted by @satuluri11, most clustering techniques deal with undirected
 graphs.  We introduce a very simple technique for defining overlapping
@@ -875,7 +876,7 @@ for each of the ten clusters:
 
 \Needspace{15\baselineskip}
 \begin{longtable}[c]{@{}rrr@{}}
-\caption{Uniqueness measures for clusters of patents
+\caption{Uniqueness measures for clusters of patents.
 \label{clusteruniqueness}}
 \\
 \hline\noalign{\medskip}
@@ -912,11 +913,11 @@ analysis will therefore **not** assume that these clusters strictly partition
 the data, and rather look at the clusters as distinct but potentially
 overlapping areas of patents.
 
-![1-neighborhood of applnID=47614741 (444 nodes)](images/cluster1.pdf)
+![1-neighborhood of applnID=47614741 (444 nodes).](images/cluster1.pdf)
 
-![1-neighborhood of applnID=45787627 (283 nodes)](images/cluster5.pdf)
+![1-neighborhood of applnID=45787627 (283 nodes).](images/cluster5.pdf)
 
-![1-neighborhood of applnID=23000850 (203 nodes)](images/cluster10.pdf)
+![1-neighborhood of applnID=23000850 (203 nodes).](images/cluster10.pdf)
 
 ##### Computation
 
@@ -1086,7 +1087,7 @@ We can calculate normalized outdegree for each third, shown in Table
 
 \Needspace{20\baselineskip}
 \begin{longtable}[c]{@{}lllll@{}}
-\caption{Normalized outdegree for date partitions
+\caption{Normalized outdegree for date partitions.
 \label{normoutdegbydatepart}}
 \\
 \hline\noalign{\medskip}
