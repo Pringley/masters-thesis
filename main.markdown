@@ -7,7 +7,7 @@ thesisdepartment: Computer Science
 thesisadviser: Mukkai S. Krishnamoorthy
 thesismemberone: David L. Spooner
 thesismembertwo: Bülent Yener
-thesissubmitdate: March 2014
+thesissubmitdate: April 2014
 thesisgraddate: May 2014
 
 thesisacknowledgements: |

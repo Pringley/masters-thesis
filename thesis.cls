@@ -349,7 +349,7 @@
  \def\coprojadviser#1{\gdef\@coprojadviser{#1}} \coprojadviser{*}
  \def\cocothadviser#1{\gdef\@cocothadviser{#1}} \cocothadviser{*}
  \def\cocoprojadviser#1{\gdef\@cocoprojadviser{#1}} \cocoprojadviser{*} 
- \def\doctype{\if \@projadviser *Dissertation \else Thesis \fi}
+ \def\doctype{Thesis }
  \def\adviser{\if \@projadviser *\@thadviser \else \@projadviser\fi}
  \def\coadviser{\if \@coprojadviser *\@cothadviser\else \@coprojadviser\fi}
  \def\cocoadviser{\if \@cocoprojadviser *\@cocothadviser\else \@cocoprojadviser\fi}
