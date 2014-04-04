@@ -264,9 +264,7 @@ bridge, and straight NumPy on matrices with various sizes:
 
 \Needspace{10\baselineskip}
 \begin{longtable}[c]{@{}llll@{}}
-\caption{Run time comparison for matrix multiplication with
-\texttt{Grisbr}. \label{grisbrruntime}}
-
+\caption{Run time comparison for matrix multiplication.  \label{grisbrruntime}}
 \\
 \hline\noalign{\medskip}
 \begin{minipage}[b]{0.11\columnwidth}\raggedright
