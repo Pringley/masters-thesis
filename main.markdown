@@ -164,9 +164,7 @@ use foreign language objects in the client space.
 
 ## `Grisbr` -- matrix multiplication proof of concept {#grisbersec}
 
-In Ruby, matrix multiplication is done via the
-[Matrix#*](http://www.ruby-doc.org/stdlib-2.0.0/libdoc/matrix/rdoc/Matrix.html#method-i-2A)
-method:
+In Ruby, matrix multiplication is done via the Matrix#* method:
 
 ```ruby
 require 'matrix'
@@ -195,9 +193,9 @@ On the other hand, Python has NumPy [@jones01], which is both stable and
 feature-rich.
 
 This proof-of-concept shows that the use of a Ruby-to-Python bridge is a
-feasible method for matrix multiplication. The bridge uses
-[JSON](http://www.json.org/)-encoded calls over POSIX pipes for communication
-between the Ruby process and a forked Python process.
+feasible method for matrix multiplication. The bridge uses JSON-encoded calls
+over POSIX pipes for communication between the Ruby process and a forked Python
+process.
 
 Our example demonstrates a 30x speedup from native Ruby, reducing the runtime
 on the 512 by 512 down to just a second and a half:
@@ -693,9 +691,6 @@ language (<http://python.org/>) and the following libraries:
 -   `pandas` for tabular data analysis [@mckinney12]
 -   `scipy` for statistics [@jones01]
 -   `matplotlib` for creating plots [@hunter07]
-
-More information about the code written for this paper can be found under the
-section, [Code](#code).
 
 ## Approaches
 
