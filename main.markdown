@@ -68,7 +68,7 @@ faster or has better libraries, the benefits often outweigh those costs.
 The concept of a language bridge is not a new one. Current techniques vary in
 overhead and complexity.
 
-### Common Intermediate Language
+### Common intermediate language
 
 Languages within the same runtime are typically capable of bridging with little
 to no overhead.
@@ -81,7 +81,7 @@ virtual machine.
 The Java ecosystem can also be used similarly -- for example, between Jython
 and Java programs.
 
-### Foreign Function Interface
+### Foreign function interface
 
 For languages with a common link to C, the Foreign Function Interface (FFI) is
 a powerful tool for passing types across a bridge.
@@ -96,7 +96,7 @@ function calls to C. Prior art exists trying to connect Jython and CPython
 libraries are not functional, and NumPy also does not work using this
 technique.
 
-### Remote Procedure Call
+### Remote procedure call
 
 The most robust technique for language bridging is remote procedure call --
 send requests through a channel to a server running the other language.
@@ -149,7 +149,7 @@ Below is a sketch of the thesis chapters:
     access Python libraries from the Ruby language in a case study of LED
     patents and metadata.
 
-Bifrost: A Dynamic Remote Procedure Call Protocol {#bifrostchapter}
+Bifrost: a dynamic remote procedure call protocol {#bifrostchapter}
 =================================================
 
 Section \ref{grisbersec} presents a proof of concept called `Grisbr`, a Ruby
@@ -196,7 +196,7 @@ process.
 Our example demonstrates a 30x speedup from native Ruby, reducing the runtime
 on the 512 by 512 down to just a second and a half.
 
-### Implementation Overview
+### Implementation overview
 
 The Ruby side of the bridge encodes a request as a JSON string with named
 arguments. Ruby then forks a Python process with the Python receiver code and
@@ -329,7 +329,7 @@ generalizing the bridging technique in two ways:
 
 -   Use **object proxies** to allow for intermediate results.
 
-## `Bifrost` -- General Protocol {#bifrostsec}
+## `Bifrost` -- general protocol {#bifrostsec}
 
 Our full protocol will take the result from `Grisbr` and combine it with
 introspection and object proxies for a general solution.
@@ -468,7 +468,7 @@ def handle(request_json):
     return result
 ```
 
-### Object Proxies
+### Object proxies
 
 Most libraries for modern scripting languages are more than just a flat module
 of functions -- they make heavy use of objects, both to store state and to
@@ -642,7 +642,7 @@ matrices, and retrieving the result from the returned object proxy.
     { "result": [[8, 5], [20, 13]] }
     ```
 
-Case Study of Approaches to Finding Patterns in LED Patent Citation Networks {#patentchapter}
+Case study of approaches to finding patterns in LED patent citation networks {#patentchapter}
 ============================================================================
 
 To highlight the robustness of the protocol as-written for many libraries, the

@@ -629,8 +629,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % make the following names uppercase:
 \renewcommand\contentsname{Contents}
-\renewcommand\listfigurename{List of Figures}
-\renewcommand\listtablename{List of Tables}
+\renewcommand\listfigurename{List of figures}
+\renewcommand\listtablename{List of tables}
 \renewcommand\bibname{Bibliography}
 \renewcommand\indexname{Index}
 \renewcommand\partname{Part}
