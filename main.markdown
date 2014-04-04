@@ -176,11 +176,7 @@ puts a * b
 
 This works for small matrices, but since it is implemented in pure Ruby, it can
 be very slow. For example, multiplying 512x512 matrices takes over 45 seconds
-on a consumer laptop:
-
-    $ cd ruby
-    $ time ruby mm-native.rb ../inputs/512.txt
-    ruby mm-native.rb ../inputs/512.txt  45.45s user 0.04s system 99% cpu 45.502 total
+on a consumer laptop.
 
 To speed this up, we could write the function in C, which Ruby supports, but
 this is both tedious and error-prone.
@@ -198,10 +194,7 @@ over POSIX pipes for communication between the Ruby process and a forked Python
 process.
 
 Our example demonstrates a 30x speedup from native Ruby, reducing the runtime
-on the 512 by 512 down to just a second and a half:
-
-    $ time ruby mm-grisbr.rb ../inputs/512.txt
-    ruby mm-grisbr.rb ../inputs/512.txt  1.32s user 0.18s system 101% cpu 1.480 total
+on the 512 by 512 down to just a second and a half.
 
 ### Implementation Overview
 
@@ -220,8 +213,8 @@ module Grisbr
     # Convert arguments to JSON.
     args = JSON.generate({a: a, b: b})
 
-    # Fork a process running the Python receiver server, sending the function
-    # parameters via stdin.
+    # Fork a process running the Python receiver server, sending
+    # the function parameters via stdin.
     result, status = Open3.capture2("python grisbr-receiver.py",
                                     stdin_data: args)
     # Parse the response JSON and return.
@@ -784,9 +777,12 @@ applnID & indegree
 \noalign{\medskip}
 \end{longtable}
 
+\newpage
+
 ##### Computation
 
-We computed indegree using `networkx.DiGraph.in_degree()` [@hagberg08].
+We computed indegree using \
+`networkx.DiGraph.in_degree()` [@hagberg08].
 
 #### PageRank
 
@@ -1167,8 +1163,9 @@ This is applicable in many situations:
     # Establish connection to a Python bifrost server.
     python = RuBifrost.python
 
-    # Methods that return objects (such as networkx.Graph) instead return object
-    # proxies, which in turn have all the methods of the object.
+    # Methods that return objects (such as networkx.Graph) instead
+    # return object proxies, which in turn have all the methods of
+    # the object.
     NetworkX = python.import 'networkx'
     graph = NetworkX.Graph()
     graph.add_edges_from([
@@ -1176,10 +1173,11 @@ This is applicable in many situations:
       [5, 6], [5, 8], [6, 7]
     ])
 
-    # Object proxies can also be used as arguments for other methods. In addition,
-    # complicated nested objects can be returned as results.
+    # Object proxies can also be used as arguments for other
+    # methods. In addition, complicated nested objects can be
+    # returned as results.
     p NetworkX.connected_components(graph)
-    # => [[8, 5, 6, 7], [1, 2, 3]]o``
+    # => [[8, 5, 6, 7], [1, 2, 3]]``
     ```
 
     In Chapter \ref{patentchapter}, we use this to explore a network of
@@ -1202,13 +1200,16 @@ This is applicable in many situations:
     An extract from the source of a Jython Bifrost client is shown below:
 
     ```python
-    from java.io import BufferedReader, InputStreamReader, BufferedWriter, OutputStreamWriter
+    from java.io import BufferedReader, InputStreamReader
+    from java.io import BufferedWriter, OutputStreamWriter
     from java.lang import ProcessBuilder
     bifrost_cmd = ['python3', '-mpybifrost.server']
     process = ProcessBuilder(bifrost_cmd).start()
     input_stream = process.getInputStream()
-    self.stdin = BufferedWriter(OutputStreamWriter(process.getOutputStream()))
-    self.stdout = BufferedReader(InputStreamReader(process.getInputStream()))
+    self.stdin = BufferedWriter(
+        OutputStreamWriter(process.getOutputStream()))
+    self.stdout = BufferedReader(
+        InputStreamReader(process.getInputStream()))
     ```
 
     (The remainder is available in the appendix, but it is very similar to the
