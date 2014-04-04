@@ -269,18 +269,55 @@ p Grisbr.multiply(a, b)
 Table \ref{grisbrruntime} shows a breakdown of runtimes for native Ruby, the
 bridge, and straight NumPy on matrices with various sizes:
 
-+--------+-------+---------+---------+
-|        | 2x2   | 128x128 | 512x512 |
-+========+=======+=========+=========+
-| Ruby   |  .08s |    .79s |  45.50s |
-+--------+-------+---------+---------+
-| Grisbr |  .19s |    .27s |   1.48s |
-+--------+-------+---------+---------+
-| Python |  .09s |    .10s |    .28s |
-+--------+-------+---------+---------+
+\begin{longtable}[c]{@{}llll@{}}
+\caption{Run time comparison for matrix multiplication with
+\texttt{Grisbr} \label{grisbrruntime}}
 
-Table: Run time comparison for matrix multiplication with `Grisbr`
-\label{grisbrruntime}
+\\
+\hline\noalign{\medskip}
+\begin{minipage}[b]{0.11\columnwidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright
+2x2
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+128x128
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright
+512x512
+\end{minipage}
+\\\noalign{\medskip}
+\hline\noalign{\medskip}
+\begin{minipage}[t]{0.11\columnwidth}\raggedright
+Ruby
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright
+.08s
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+.79s
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+45.50s
+\end{minipage}
+\\\noalign{\medskip}
+\begin{minipage}[t]{0.11\columnwidth}\raggedright
+Grisbr
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright
+.19s
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+.27s
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+1.48s
+\end{minipage}
+\\\noalign{\medskip}
+\begin{minipage}[t]{0.11\columnwidth}\raggedright
+Python
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright
+.09s
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+.10s
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright
+.28s
+\end{minipage}
+\\\noalign{\medskip}
+\hline
+\noalign{\medskip}
+\end{longtable}
 
 On the 512 by 512 matrix, we saw a 30x speedup using the bridge!
 
@@ -718,21 +755,36 @@ with at least a hundred citations each.
 The top ten most-cited patents in our dataset are shown in Table
 \ref{topindegree}.
 
- applnID  indegree
--------- ---------
-47614741       444
-51204521       360
-52376694       339
-48351911       305
-45787627       283
-45787665       267
-46666643       235
-53608703       213
-54068562       213
-23000850       203
-
-Table: Top ten most-cited patents
-\label{topindegree}
+\begin{longtable}[c]{@{}rr@{}}
+\caption{Top ten most-cited patents \label{topindegree}}
+\\
+\hline\noalign{\medskip}
+applnID & indegree
+\\\noalign{\medskip}
+\hline\noalign{\medskip}
+47614741 & 444
+\\\noalign{\medskip}
+51204521 & 360
+\\\noalign{\medskip}
+52376694 & 339
+\\\noalign{\medskip}
+48351911 & 305
+\\\noalign{\medskip}
+45787627 & 283
+\\\noalign{\medskip}
+45787665 & 267
+\\\noalign{\medskip}
+46666643 & 235
+\\\noalign{\medskip}
+53608703 & 213
+\\\noalign{\medskip}
+54068562 & 213
+\\\noalign{\medskip}
+23000850 & 203
+\\\noalign{\medskip}
+\hline
+\noalign{\medskip}
+\end{longtable}
 
 ##### Computation
 
@@ -757,21 +809,36 @@ For each patent in our dataset, we calculated:
 
 Table \ref{toppagerank} shows the top ten patents sorted by PageRank.
 
- applnID  pagescore  page_rank  indegree  indegree_rank
---------  ---------  ---------  --------  -------------
-47614741   0.000371          1       444              1
-51204521   0.000329          2       360              2
-48351911   0.000291          3       305              4
-45787627   0.000241          4       283              5
-48112868   0.000227          5        63            172
-45787665   0.000220          6       267              6
-52376694   0.000210          7       339              3
-53608703   0.000193          8       213              8
-46666643   0.000173          9       235              7
-47823143   0.000168         10        47            342
-
-Table: Top ten patents by PageRank
-\label{toppagerank}
+\begin{longtable}[c]{@{}rllll@{}}
+\caption{Top ten patents by PageRank \label{toppagerank}}
+\\
+\hline\noalign{\medskip}
+applnID & pagescore & page\_rank & indegree & indegree\_rank
+\\\noalign{\medskip}
+\hline\noalign{\medskip}
+47614741 & 0.000371 & 1 & 444 & 1
+\\\noalign{\medskip}
+51204521 & 0.000329 & 2 & 360 & 2
+\\\noalign{\medskip}
+48351911 & 0.000291 & 3 & 305 & 4
+\\\noalign{\medskip}
+45787627 & 0.000241 & 4 & 283 & 5
+\\\noalign{\medskip}
+48112868 & 0.000227 & 5 & 63 & 172
+\\\noalign{\medskip}
+45787665 & 0.000220 & 6 & 267 & 6
+\\\noalign{\medskip}
+52376694 & 0.000210 & 7 & 339 & 3
+\\\noalign{\medskip}
+53608703 & 0.000193 & 8 & 213 & 8
+\\\noalign{\medskip}
+46666643 & 0.000173 & 9 & 235 & 7
+\\\noalign{\medskip}
+47823143 & 0.000168 & 10 & 47 & 342
+\\\noalign{\medskip}
+\hline
+\noalign{\medskip}
+\end{longtable}
 
 Within our dataset, PageRank and indegree are correlated with a Pearson
 product-moment coefficient of $r=.80$.
@@ -811,21 +878,37 @@ patents, we computed two measures of overlapping:
 Table \ref{clusteruniqueness} shows the value of `percentunique` and `bignodes`
 for each of the ten clusters:
 
- clustersize  percentunique  bignodes
------------- -------------- ---------
-         444       0.202703         0
-         360       0.100000         4
-         339       0.280236         0
-         305       0.163934         4
-         283       0.141343         0
-         267       0.101124         0
-         235       0.940426         0
-         213       0.985915         0
-         213       0.464789         0
-         203       0.226601         0
-
-Table: Uniqueness measures for clusters of patents
-\label{clusteruniqueness}
+\begin{longtable}[c]{@{}rrr@{}}
+\caption{Uniqueness measures for clusters of patents
+\label{clusteruniqueness}}
+\\
+\hline\noalign{\medskip}
+clustersize & percentunique & bignodes
+\\\noalign{\medskip}
+\hline\noalign{\medskip}
+444 & 0.202703 & 0
+\\\noalign{\medskip}
+360 & 0.100000 & 4
+\\\noalign{\medskip}
+339 & 0.280236 & 0
+\\\noalign{\medskip}
+305 & 0.163934 & 4
+\\\noalign{\medskip}
+283 & 0.141343 & 0
+\\\noalign{\medskip}
+267 & 0.101124 & 0
+\\\noalign{\medskip}
+235 & 0.940426 & 0
+\\\noalign{\medskip}
+213 & 0.985915 & 0
+\\\noalign{\medskip}
+213 & 0.464789 & 0
+\\\noalign{\medskip}
+203 & 0.226601 & 0
+\\\noalign{\medskip}
+\hline
+\noalign{\medskip}
+\end{longtable}
 
 Looking at `percentunique`, many clusters have a good deal over overlap, with
 unique contributions as low as 10%, although others are up to 98% unique. Our
@@ -956,26 +1039,46 @@ the results:
 Another interesting approach is to look at the filing date of the patents.
 Table \ref{patentdatehist} histogram of number of patents by filing date.
 
-date range	                count
--------------------------   ------
-1940-11-12 to 1945-07-06	1
-1945-07-06 to 1950-02-28	6
-1950-02-28 to 1954-10-23	107
-1954-10-23 to 1959-06-17	247
-1959-06-17 to 1964-02-09	369
-1964-02-09 to 1968-10-03	344
-1968-10-03 to 1973-05-28	362
-1973-05-28 to 1978-01-20	575
-1978-01-20 to 1982-09-14	678
-1982-09-14 to 1987-05-09	1125
-1987-05-09 to 1992-01-01	2257
-1992-01-01 to 1996-08-25	3451
-1996-08-25 to 2001-04-19	8103
-2001-04-19 to 2005-12-12	16019
-2005-12-12 to 2010-08-06	5040
-
-Table: Histogram of patents by filing date.
-\label{patentdatehist}
+\begin{longtable}[c]{@{}ll@{}}
+\caption{Histogram of patents by filing date. \label{patentdatehist}}
+\\
+\hline\noalign{\medskip}
+date range & count
+\\\noalign{\medskip}
+\hline\noalign{\medskip}
+1940-11-12 to 1945-07-06 & 1
+\\\noalign{\medskip}
+1945-07-06 to 1950-02-28 & 6
+\\\noalign{\medskip}
+1950-02-28 to 1954-10-23 & 107
+\\\noalign{\medskip}
+1954-10-23 to 1959-06-17 & 247
+\\\noalign{\medskip}
+1959-06-17 to 1964-02-09 & 369
+\\\noalign{\medskip}
+1964-02-09 to 1968-10-03 & 344
+\\\noalign{\medskip}
+1968-10-03 to 1973-05-28 & 362
+\\\noalign{\medskip}
+1973-05-28 to 1978-01-20 & 575
+\\\noalign{\medskip}
+1978-01-20 to 1982-09-14 & 678
+\\\noalign{\medskip}
+1982-09-14 to 1987-05-09 & 1125
+\\\noalign{\medskip}
+1987-05-09 to 1992-01-01 & 2257
+\\\noalign{\medskip}
+1992-01-01 to 1996-08-25 & 3451
+\\\noalign{\medskip}
+1996-08-25 to 2001-04-19 & 8103
+\\\noalign{\medskip}
+2001-04-19 to 2005-12-12 & 16019
+\\\noalign{\medskip}
+2005-12-12 to 2010-08-06 & 5040
+\\\noalign{\medskip}
+\hline
+\noalign{\medskip}
+\end{longtable}
 
 We can partition each company's patents into thirds -- that is, `samsung0`
 contains the first chronological third of Samsung's patents, `samsung1`
@@ -984,41 +1087,81 @@ contains the second third, and `samsung2` contains the final third.
 We can calculate normalized outdegree for each third, shown in Table
 \ref{normoutdegbydatepart}.
 
-company    partition  start       end         normalizedoutdeg    count  totalcount
---------   ---------  ----------- ----------- ------------------  ------ ----------
-samsung    0          1989-05-30  2004-06-28  2.6858168761220824  557    1673
-samsung    1          2004-06-28  2005-11-30  1.3375224416517055  557    1673
-samsung    2          2005-12-02  2010-07-13  0.5116279069767442  559    1673
-sel        0          1982-02-09  2002-02-26  8.187891440501044   479    1437
-sel        1          2002-02-28  2004-06-23  5.1941544885177455  479    1437
-sel        2          2004-06-25  2010-01-06  1.3528183716075157  479    1437
-seiko      0          1973-07-13  2002-02-22  5.644396551724138   464    1394
-seiko      1          2002-02-25  2004-01-21  2.543103448275862   464    1394
-seiko      2          2004-01-21  2009-06-18  0.9978540772532188  466    1394
-sharp      0          1972-07-31  1994-02-22  4.809264305177112   367    1103
-sharp      1          1994-02-25  2001-10-29  3.5476839237057223  367    1103
-sharp      2          2001-10-31  2010-02-26  1.8130081300813008  369    1103
-panasonic  0          1963-11-18  1997-10-31  3.4148351648351647  364    1094
-panasonic  1          1997-11-05  2002-02-21  3.6950549450549453  364    1094
-panasonic  2          2002-02-27  2010-03-05  2.2868852459016393  366    1094
-sony       0          1970-04-13  2000-09-11  4.064102564102564   312    937
-sony       1          2000-09-14  2003-08-20  4.0576923076923075  312    937
-sony       2          2003-08-28  2010-02-10  1.5878594249201279  313    937
-toshiba    0          1969-08-25  1993-03-30  4.184397163120567   282    848
-toshiba    1          1993-04-13  2001-04-27  6.1063829787234045  282    848
-toshiba    2          2001-04-27  2010-03-23  2.3732394366197185  284    848
-sanyo      0          1976-12-09  2000-03-17  6.943181818181818   264    793
-sanyo      1          2000-03-17  2003-03-28  3.25                264    793
-sanyo      2          2003-03-28  2009-01-15  1.4037735849056603  265    793
-philips    0          1954-01-29  1999-09-08  6.011406844106464   263    789
-philips    1          1999-09-08  2004-07-01  6.068441064638783   263    789
-philips    2          2004-07-09  2009-06-03  1.326996197718631   263    789
-kodak      0          1965-03-25  2001-01-30  23.63529411764706   255    767
-kodak      1          2001-02-02  2003-09-23  4.670588235294118   255    767
-kodak      2          2003-09-24  2008-02-25  1.7042801556420233  257    767
-
-Table: Normalized outdegree for date partitions
-\label{normoutdegbydatepart}
+\begin{longtable}[c]{@{}lllllll@{}}
+\caption{Normalized outdegree for date partitions
+\label{normoutdegbydatepart}}
+\\
+\hline\noalign{\medskip}
+company & partition & start & end & normalizedoutdeg & count &
+totalcount
+\\\noalign{\medskip}
+\hline\noalign{\medskip}
+samsung & 0 & 1989-05-30 & 2004-06-28 & 2.6858168761220824 & 557 & 1673
+\\\noalign{\medskip}
+samsung & 1 & 2004-06-28 & 2005-11-30 & 1.3375224416517055 & 557 & 1673
+\\\noalign{\medskip}
+samsung & 2 & 2005-12-02 & 2010-07-13 & 0.5116279069767442 & 559 & 1673
+\\\noalign{\medskip}
+sel & 0 & 1982-02-09 & 2002-02-26 & 8.187891440501044 & 479 & 1437
+\\\noalign{\medskip}
+sel & 1 & 2002-02-28 & 2004-06-23 & 5.1941544885177455 & 479 & 1437
+\\\noalign{\medskip}
+sel & 2 & 2004-06-25 & 2010-01-06 & 1.3528183716075157 & 479 & 1437
+\\\noalign{\medskip}
+seiko & 0 & 1973-07-13 & 2002-02-22 & 5.644396551724138 & 464 & 1394
+\\\noalign{\medskip}
+seiko & 1 & 2002-02-25 & 2004-01-21 & 2.543103448275862 & 464 & 1394
+\\\noalign{\medskip}
+seiko & 2 & 2004-01-21 & 2009-06-18 & 0.9978540772532188 & 466 & 1394
+\\\noalign{\medskip}
+sharp & 0 & 1972-07-31 & 1994-02-22 & 4.809264305177112 & 367 & 1103
+\\\noalign{\medskip}
+sharp & 1 & 1994-02-25 & 2001-10-29 & 3.5476839237057223 & 367 & 1103
+\\\noalign{\medskip}
+sharp & 2 & 2001-10-31 & 2010-02-26 & 1.8130081300813008 & 369 & 1103
+\\\noalign{\medskip}
+panasonic & 0 & 1963-11-18 & 1997-10-31 & 3.4148351648351647 & 364 &
+1094
+\\\noalign{\medskip}
+panasonic & 1 & 1997-11-05 & 2002-02-21 & 3.6950549450549453 & 364 &
+1094
+\\\noalign{\medskip}
+panasonic & 2 & 2002-02-27 & 2010-03-05 & 2.2868852459016393 & 366 &
+1094
+\\\noalign{\medskip}
+sony & 0 & 1970-04-13 & 2000-09-11 & 4.064102564102564 & 312 & 937
+\\\noalign{\medskip}
+sony & 1 & 2000-09-14 & 2003-08-20 & 4.0576923076923075 & 312 & 937
+\\\noalign{\medskip}
+sony & 2 & 2003-08-28 & 2010-02-10 & 1.5878594249201279 & 313 & 937
+\\\noalign{\medskip}
+toshiba & 0 & 1969-08-25 & 1993-03-30 & 4.184397163120567 & 282 & 848
+\\\noalign{\medskip}
+toshiba & 1 & 1993-04-13 & 2001-04-27 & 6.1063829787234045 & 282 & 848
+\\\noalign{\medskip}
+toshiba & 2 & 2001-04-27 & 2010-03-23 & 2.3732394366197185 & 284 & 848
+\\\noalign{\medskip}
+sanyo & 0 & 1976-12-09 & 2000-03-17 & 6.943181818181818 & 264 & 793
+\\\noalign{\medskip}
+sanyo & 1 & 2000-03-17 & 2003-03-28 & 3.25 & 264 & 793
+\\\noalign{\medskip}
+sanyo & 2 & 2003-03-28 & 2009-01-15 & 1.4037735849056603 & 265 & 793
+\\\noalign{\medskip}
+philips & 0 & 1954-01-29 & 1999-09-08 & 6.011406844106464 & 263 & 789
+\\\noalign{\medskip}
+philips & 1 & 1999-09-08 & 2004-07-01 & 6.068441064638783 & 263 & 789
+\\\noalign{\medskip}
+philips & 2 & 2004-07-09 & 2009-06-03 & 1.326996197718631 & 263 & 789
+\\\noalign{\medskip}
+kodak & 0 & 1965-03-25 & 2001-01-30 & 23.63529411764706 & 255 & 767
+\\\noalign{\medskip}
+kodak & 1 & 2001-02-02 & 2003-09-23 & 4.670588235294118 & 255 & 767
+\\\noalign{\medskip}
+kodak & 2 & 2003-09-24 & 2008-02-25 & 1.7042801556420233 & 257 & 767
+\\\noalign{\medskip}
+\hline
+\noalign{\medskip}
+\end{longtable}
 
 ## Results
 
