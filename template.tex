@@ -160,10 +160,10 @@ $endfor$
 \listoffigures
 }
 
-\specialhead{ACKNOWLEDGEMENTS}
+\specialhead{Acknowledgements}
 $thesisacknowledgements$
 
-\specialhead{ABSTRACT}
+\specialhead{Abstract}
 $thesisabstract$
 
 $for(include-before)$
@@ -172,14 +172,14 @@ $include-before$
 $endfor$
 $body$
 
-\defbibheading{bibliography}[LITERATURE CITED]{%
+\defbibheading{bibliography}[Literature Cited]{%
 \specialhead{#1}}
 %\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
 %\bibliography{$biblio-files$}
 \printbibliography
 
 \appendix
-\addtocontents{toc}{\parindent0pt\vskip12pt APPENDICES}
+\addtocontents{toc}{\parindent0pt\vskip12pt Appendices}
 
 $if(thesisappendix)$
 $thesisappendix$

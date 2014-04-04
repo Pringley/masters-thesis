@@ -37,7 +37,7 @@ thesisabstract: |
     of a dataset including a network of LED patents and their metadata.
 
 thesisappendix: |
-    SOURCE
+    Source
     ======
 
     This thesis was generated using John Macfarlane's Pandoc as a frontend for
@@ -52,7 +52,7 @@ links-as-notes: true
 classoption: [chap]
 ...
 
-INTRODUCTION
+Introduction
 ============
 
 A **language bridge** allows a program written in one language to use functions
@@ -149,7 +149,7 @@ Below is a sketch of the thesis chapters:
     access Python libraries from the Ruby language in a case study of LED
     patents and metadata.
 
-BIFROST: A DYNAMIC REMOTE PROCEDURE CALL PROTOCOL {#bifrostchapter}
+Bifrost: A Dynamic Remote Procedure Call Protocol {#bifrostchapter}
 =================================================
 
 Section \ref{grisbersec} presents a proof of concept called `Grisbr`, a Ruby
@@ -613,7 +613,7 @@ matrices, and retrieving the result from the returned object proxy.
     { "result": [[8, 5], [20, 13]] }
     ```
 
-CASE STUDY OF APPROACHES TO FINDING PATTERNS IN LED PATENT CITATION NETWORKS {#patentchapter}
+Case Study of Approaches to Finding Patterns in LED Patent Citation Networks {#patentchapter}
 ============================================================================
 
 To highlight the robustness of the protocol as-written for many libraries, the
@@ -1036,7 +1036,7 @@ mean outdegree more than *double* that of the entire dataset.
 By contribution factor analysis, each of the top 10 (except Samsung) still
 exceeded the expected ratio.
 
-CONCLUSION
+Conclusion
 ==========
 
 The presented `Bifrost` protocol can dynamically and effectively generate
