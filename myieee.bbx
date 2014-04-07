@@ -28,7 +28,7 @@
   \mkpageprefix[bookpagination][\mkpagegrouped]{#1}%
 }
 \DeclareFieldFormat{sentencecase}{\MakeSentenceCase{#1}}
-\DeclareFieldFormat[online]{title}{#1\isdot}
+% \DeclareFieldFormat[online]{title}{#1\isdot}
 \DeclareFieldFormat[report]{title}{\mkbibquote{#1\isdot}}
 \DeclareFieldFormat{url}{\bibstring{url}\addcolon\space\url{#1}}
 
@@ -710,6 +710,7 @@
     {\usebibmacro{eprint}}
     {}%
   \newunit\newblock
+  \setunit{\adddot\addspace}%
   \usebibmacro{url+urldate}%
   \setunit{\adddot\addspace}%
   \usebibmacro{addendum+pubstate}%
